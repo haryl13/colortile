@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/CSS" href="campusstyle.css">
+ 
+</head>
+<body id="body" style="background: grey;">
+
+<h1 id="h1">COLOR TILES</h1>
+
+<p id="move">MOVES : 0 </p>
+
+<script>
+  var id ="" ;
+  var h=0;
+ function clrchg(id) {
+    
+      grid = [
+       ["a1","a2","a3","a4","a5"],
+       ["a6","a7","a8","a9","a10"],
+       ["a11","a12","a13","a14","a15"],
+       ["a16","a17","a18","a19","a20"],
+       ["a21","a22","a23","a24","a25"]
+
+
+      ] ;
+
+//checking id values row and coloumn
+dance : for(i=0;i<5;i++){
+  for (j=0;j<5;j++){
+     if (grid[i][j] == id) {
+       break dance;
+     }
+
+  }
+}
+// check if idblock is next to white
+ 
+ 
+ sides=[];
+ if ((j-1) > -1){
+   sides.push(grid[i][j-1]);
+ }
+ if ((j+1) < 5){
+   sides.push(grid[i][j+1]);
+ }
+ if ((i-1) > -1){
+   sides.push(grid[i-1][j]);
+ }
+ if ( (i+1)  < 5){
+   sides.push(grid[i+1][j]);
+ }
+ for(i=0 ; i < sides.length; i++) {
+   
+  if (document.getElementById(sides[i]).style.backgroundColor == "white"){
+         //white tile swap
+         temp= document.getElementById(id).style.backgroundColor ;
+          document.getElementById(id).style.backgroundColor = "white";
+           document.getElementById(sides[i]).style.backgroundColor = temp;
+             // moves
+             
+             h = h+1;
+             document.getElementById("move").innerHTML = "MOVES : " + h ;
+             
+             
+           //check for match
+            var grid1 = [ document.getElementById("a7").style.backgroundColor,
+            document.getElementById("a8").style.backgroundColor,
+            document.getElementById("a9").style.backgroundColor,
+            document.getElementById("a12").style.backgroundColor,
+            document.getElementById("a13").style.backgroundColor,
+            document.getElementById("a14").style.backgroundColor,
+            document.getElementById("a17").style.backgroundColor,
+            document.getElementById("a18").style.backgroundColor,
+            document.getElementById("a19").style.backgroundColor ]
+
+            var grid2 = [ document.getElementById("b1").style.backgroundColor,
+            document.getElementById("b2").style.backgroundColor,
+            document.getElementById("b3").style.backgroundColor,
+            document.getElementById("b4").style.backgroundColor,
+            document.getElementById("b5").style.backgroundColor,
+            document.getElementById("b6").style.backgroundColor,
+            document.getElementById("b7").style.backgroundColor,
+            document.getElementById("b8").style.backgroundColor,
+            document.getElementById("b9").style.backgroundColor ]
+             
+            if(JSON.stringify(grid1) == JSON.stringify(grid2)){
+              
+              document.getElementById("h1").innerHTML = "COLOR MATCH!!";
+               document.getElementById("body").style.background= "url('https://i.ytimg.com/vi/qTmTP7Dyfv8/maxresdefault.jpg')";
+              document.getElementById("BGM").play();
+
+            }
+
+           
+ 
+           
+ }
+ 
+
+ }
+
+ }
+</script>
+
+
+<div id="wh">
+<div id="gag">
+  
+ 
+ <div id="a1"onclick="clrchg('a1')"></div>
+ <div id="a2"onclick="clrchg('a2')"></div>
+ <div id="a3"onclick="clrchg('a3')"></div>
+ <div id="a4"onclick="clrchg('a4')"></div>
+ <div id="a5" onclick="clrchg('a5')"></div>
+ <div id="a6" onclick="clrchg('a6')"></div>
+ 
+
+
+
+<div id="a7"onclick="clrchg('a7')"></div>
+<div id="a8"onclick="clrchg('a8')"></div>
+<div id="a9"onclick="clrchg('a9')"></div>
+<div id="a10"onclick="clrchg('a10')"></div>
+<div id="a11" onclick="clrchg('a11')"></div>
+<div id="a12" onclick="clrchg('a12')"></div>
+
+<div id="a13" onclick="clrchg('a13')"></div>
+<div id="a14"onclick="clrchg('a14')"></div>
+<div id="a15"onclick="clrchg('a15')"></div>
+<div id="a16"onclick="clrchg('a16')"></div>
+<div id="a17"onclick="clrchg('a17')"></div>
+<div id="a18" onclick="clrchg('a18')"></div>
+<div id="a19" onclick="clrchg('a19')"></div>
+<div id="a20"onclick="clrchg('a20')"></div>
+<div id="a21"onclick="clrchg('a21')"></div>
+<div id="a22"onclick="clrchg('a22')"></div>
+<div id="a23"onclick="clrchg('a23')"></div>
+<div id="a24"onclick="clrchg('a24')"></div>
+<div id="a25"onclick="clrchg('a25')"></div>
+</div>
+<div id="smlbox" >
+  <div id="b1"></div>
+ <div id="b2"></div>
+ <div id="b3"></div>
+ <div id="b4"></div>
+ <div id="b5"></div>
+ <div id="b6"></div>
+ <div id="b7"></div>
+<div id="b8"></div>
+<div id="b9"></div>
+
+</div>
+
+</div>
+
+<audio id="BGM">
+  <source src="bgm.mp3" >
+</audio>
+
+<script src="move.js"></script>
+</body>
+</html>
